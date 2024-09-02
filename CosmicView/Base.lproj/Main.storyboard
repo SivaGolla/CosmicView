@@ -33,17 +33,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="JLE-5X-txj">
-                                <rect key="frame" x="16" y="87" width="361" height="36"/>
+                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="JLE-5X-txj">
+                                <rect key="frame" x="16" y="95" width="361" height="36"/>
                                 <connections>
                                     <action selector="handleDateSelection" destination="HNB-JK-nVM" eventType="valueChanged" id="B2C-K7-ZzO"/>
                                 </connections>
                             </datePicker>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btE-2l-ZYc">
-                                <rect key="frame" x="0.0" y="131" width="393" height="658"/>
+                                <rect key="frame" x="0.0" y="139" width="393" height="630"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6z-Ea-r0N" customClass="MediaViewer" customModule="CosmicView" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="8" width="393" height="658"/>
+                                        <rect key="frame" x="0.0" y="8" width="393" height="630"/>
                                         <viewLayoutGuide key="safeArea" id="Z6r-cL-NQq"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
@@ -67,13 +67,13 @@
                         <viewLayoutGuide key="safeArea" id="qTw-TH-WMS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="btE-2l-ZYc" firstAttribute="top" secondItem="JLE-5X-txj" secondAttribute="bottom" constant="8" symbolic="YES" id="1U7-3Y-b3m"/>
                             <constraint firstItem="JLE-5X-txj" firstAttribute="leading" secondItem="qTw-TH-WMS" secondAttribute="leading" constant="16" id="4hM-WX-AcC"/>
-                            <constraint firstItem="btE-2l-ZYc" firstAttribute="top" secondItem="qTw-TH-WMS" secondAttribute="top" constant="28" id="IDN-yv-9UI"/>
                             <constraint firstItem="btE-2l-ZYc" firstAttribute="trailing" secondItem="qTw-TH-WMS" secondAttribute="trailing" id="KMy-QU-Cnk"/>
                             <constraint firstItem="qTw-TH-WMS" firstAttribute="leading" secondItem="btE-2l-ZYc" secondAttribute="leading" id="UAa-Q4-IOr"/>
                             <constraint firstItem="qTw-TH-WMS" firstAttribute="trailing" secondItem="JLE-5X-txj" secondAttribute="trailing" constant="16" id="djJ-HT-hvT"/>
-                            <constraint firstItem="qTw-TH-WMS" firstAttribute="top" secondItem="JLE-5X-txj" secondAttribute="top" constant="16" id="p0s-KL-dhg"/>
-                            <constraint firstItem="btE-2l-ZYc" firstAttribute="bottom" secondItem="qTw-TH-WMS" secondAttribute="bottom" constant="20" id="pn7-vL-ZJA"/>
+                            <constraint firstItem="qTw-TH-WMS" firstAttribute="top" secondItem="JLE-5X-txj" secondAttribute="top" constant="8" id="p0s-KL-dhg"/>
+                            <constraint firstItem="btE-2l-ZYc" firstAttribute="bottom" secondItem="qTw-TH-WMS" secondAttribute="bottom" id="pn7-vL-ZJA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KLQ-Ai-hFL"/>

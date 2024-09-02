@@ -87,6 +87,7 @@ extension MediaOfTheDayViewController {
                 
                 self?.mediaViewer.mediaItem = mediaItem
             }
+            self?.datePicker.isHidden = false
         }
     }
     
