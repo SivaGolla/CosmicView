@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cxd-F1-AsB">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--More-->
+        <scene sceneID="9r6-hx-gjS">
+            <objects>
+                <viewController id="omb-oP-hDd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T3Y-md-Vhl">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="cjO-1c-NAo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="More" id="o90-qT-ZrF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zAH-WO-0Bf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="167" y="392"/>
+        </scene>
+        <!--Media Of The Day View Controller-->
+        <scene sceneID="1Cf-Fg-Ygf">
+            <objects>
+                <viewController id="HNB-JK-nVM" customClass="MediaOfTheDayViewController" customModule="CosmicView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gZP-Rn-NLw">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="JLE-5X-txj">
+                                <rect key="frame" x="16" y="87" width="361" height="36"/>
+                                <connections>
+                                    <action selector="handleDateSelection" destination="HNB-JK-nVM" eventType="valueChanged" id="B2C-K7-ZzO"/>
+                                </connections>
+                            </datePicker>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6z-Ea-r0N" customClass="MediaViewer" customModule="CosmicView" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="123" width="393" height="646"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qTw-TH-WMS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JLE-5X-txj" firstAttribute="leading" secondItem="qTw-TH-WMS" secondAttribute="leading" constant="16" id="4hM-WX-AcC"/>
+                            <constraint firstItem="E6z-Ea-r0N" firstAttribute="bottom" secondItem="qTw-TH-WMS" secondAttribute="bottom" id="6AJ-Dt-Zqc"/>
+                            <constraint firstItem="E6z-Ea-r0N" firstAttribute="top" secondItem="JLE-5X-txj" secondAttribute="bottom" id="E8o-ak-XG7"/>
+                            <constraint firstItem="E6z-Ea-r0N" firstAttribute="leading" secondItem="qTw-TH-WMS" secondAttribute="leading" id="Jjp-fi-bjo"/>
+                            <constraint firstItem="qTw-TH-WMS" firstAttribute="trailing" secondItem="JLE-5X-txj" secondAttribute="trailing" constant="16" id="djJ-HT-hvT"/>
+                            <constraint firstItem="qTw-TH-WMS" firstAttribute="trailing" secondItem="E6z-Ea-r0N" secondAttribute="trailing" id="h7Z-xC-Vam"/>
+                            <constraint firstItem="qTw-TH-WMS" firstAttribute="top" secondItem="JLE-5X-txj" secondAttribute="top" constant="16" id="p0s-KL-dhg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="KLQ-Ai-hFL"/>
+                    <connections>
+                        <outlet property="datePicker" destination="JLE-5X-txj" id="vTU-Dy-ehy"/>
+                        <outlet property="mediaViewer" destination="E6z-Ea-r0N" id="AeX-gz-qjr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NX3-tY-uyP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="147.32824427480915" y="-339.43661971830988"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="LpO-tP-LkZ">
+            <objects>
+                <tabBarController id="cxd-F1-AsB" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DCG-Vj-FoU">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <tabBarAppearance key="standardAppearance"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="3Gj-Ba-l4m" kind="relationship" relationship="viewControllers" id="wxq-6J-sak"/>
+                        <segue destination="omb-oP-hDd" kind="relationship" relationship="viewControllers" id="3rf-5U-cNY"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QDm-av-4m4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1684" y="-36"/>
+        </scene>
+        <!--Astro Pix-->
+        <scene sceneID="hPJ-Ws-uL8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Gj-Ba-l4m" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Astro Pix" id="q21-lz-Yh4"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="32M-PN-Wt2">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HNB-JK-nVM" kind="relationship" relationship="rootViewController" id="VoO-Ye-geq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DBE-e3-Gsr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-779.38931297709917" y="-339.43661971830988"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
