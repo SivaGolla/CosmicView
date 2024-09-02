@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,7 +20,9 @@
                         <viewLayoutGuide key="safeArea" id="cjO-1c-NAo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="More" id="o90-qT-ZrF"/>
+                    <tabBarItem key="tabBarItem" title="More" selectedImage="menucard" catalog="system" id="o90-qT-ZrF">
+                        <imageReference key="image" image="menucard" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zAH-WO-0Bf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -110,7 +113,11 @@
         <scene sceneID="hPJ-Ws-uL8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Gj-Ba-l4m" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Astro Pix" id="q21-lz-Yh4"/>
+                    <tabBarItem key="tabBarItem" title="Astro Pix" id="q21-lz-Yh4">
+                        <imageReference key="image" image="skew" catalog="system" symbolScale="large"/>
+                        <imageReference key="selectedImage" image="skew" catalog="system" symbolScale="large"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="8" vertical="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="32M-PN-Wt2">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -127,6 +134,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="menucard" catalog="system" width="108" height="128"/>
+        <image name="skew" catalog="system" width="128" height="108"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

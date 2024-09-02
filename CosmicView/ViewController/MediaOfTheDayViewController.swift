@@ -22,7 +22,7 @@ class MediaOfTheDayViewController: UIViewController {
     /// The date selected by the user, defaulting to one day prior to the current date.
     /// This property triggers a media download when its value changes.
     ///
-    var selectedDate: Date = Date().advanced(by: 60 * 60 * -24) {
+    var selectedDate: Date = Date() {
         didSet {
             print(selectedDate)
             fetchMediaOfTheDay()
@@ -33,7 +33,6 @@ class MediaOfTheDayViewController: UIViewController {
         super.viewDidLoad()
         
         // Set the accessibility identifiers for UI elements for better accessibility support and testing.
-        //title = "Picture Of the Day"
         view.accessibilityIdentifier = "homeView"
         datePicker.accessibilityIdentifier = "astroPixDatePicker"
         
@@ -52,7 +51,8 @@ class MediaOfTheDayViewController: UIViewController {
 
     /// Configures the appearance and behavior of the date picker.
     private func populateDatePicker() {
-        datePicker.date = Date()
+        datePicker.date = selectedDate
+        datePicker.maximumDate = Date()
         datePicker.locale = .current
         datePicker.preferredDatePickerStyle = .compact
         datePicker.datePickerMode = .date
