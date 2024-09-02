@@ -13,6 +13,9 @@ class MediaOfTheDayViewController: UIViewController {
     /// Outlet for the UIDatePicker used to select a date.
     @IBOutlet weak var datePicker: UIDatePicker!
     
+    /// Outlet for the UIScrollView responsible for containing media viewer.
+    @IBOutlet weak var containerScrollView: UIScrollView!
+    
     /// Outlet for the custom view responsible for rendering media.
     @IBOutlet weak var mediaViewer: MediaViewer!
     
@@ -21,6 +24,7 @@ class MediaOfTheDayViewController: UIViewController {
     ///
     var selectedDate: Date = Date().advanced(by: 60 * 60 * -24) {
         didSet {
+            print(selectedDate)
             fetchMediaOfTheDay()
         }
     }
@@ -36,7 +40,6 @@ class MediaOfTheDayViewController: UIViewController {
         // Configure the date picker and initiate the download of the media for a date.
         populateDatePicker()
         fetchMediaOfTheDay()
-        view.layoutIfNeeded()
     }
     
     /// Handles date selection from the date picker and updates the `selectedDate` property.
@@ -75,7 +78,7 @@ extension MediaOfTheDayViewController {
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
-
+                LoadingView.stop()
                 // Show an error prompt to the user.
                 self?.showErrorPrompt()
                 
@@ -90,6 +93,7 @@ extension MediaOfTheDayViewController {
     /// Displays an alert to the user when an error occurs during data fetching.
     private func showErrorPrompt() {
         let alert = UIAlertController(title: "Warning", message: "Failed to Download..", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert, animated: true, completion: nil)
     }
 }

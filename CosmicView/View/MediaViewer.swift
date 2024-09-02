@@ -27,7 +27,7 @@ class MediaViewer: UIView {
     // MARK: - Outlets
     
     @IBOutlet weak var imageTitle: UILabel!
-    @IBOutlet weak var descTextView: UITextView!
+    @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var webPlayerView: UIView!
     @IBOutlet weak var youTublePlayerView: YTPlayerView!
@@ -49,7 +49,7 @@ class MediaViewer: UIView {
             }
             
             imageTitle.text = mediaInstance.title
-            descTextView.text = mediaInstance.explanation
+            descLabel.text = mediaInstance.explanation
             
             switch mediaInstance.mediaType {
             case .image:

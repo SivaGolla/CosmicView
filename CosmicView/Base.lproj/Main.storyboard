@@ -39,25 +39,46 @@
                                     <action selector="handleDateSelection" destination="HNB-JK-nVM" eventType="valueChanged" id="B2C-K7-ZzO"/>
                                 </connections>
                             </datePicker>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6z-Ea-r0N" customClass="MediaViewer" customModule="CosmicView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="123" width="393" height="646"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btE-2l-ZYc">
+                                <rect key="frame" x="0.0" y="131" width="393" height="658"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6z-Ea-r0N" customClass="MediaViewer" customModule="CosmicView" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="8" width="393" height="658"/>
+                                        <viewLayoutGuide key="safeArea" id="Z6r-cL-NQq"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="E6z-Ea-r0N" firstAttribute="leading" secondItem="v1w-Ak-gwX" secondAttribute="leading" id="2Hj-Tu-QpO"/>
+                                    <constraint firstItem="E6z-Ea-r0N" firstAttribute="leading" secondItem="btE-2l-ZYc" secondAttribute="leading" id="6em-rH-IEe"/>
+                                    <constraint firstItem="E6z-Ea-r0N" firstAttribute="width" secondItem="ldD-dz-C2t" secondAttribute="width" id="S6V-hI-pQ0"/>
+                                    <constraint firstItem="E6z-Ea-r0N" firstAttribute="top" secondItem="v1w-Ak-gwX" secondAttribute="top" constant="8" id="SNR-g6-N90"/>
+                                    <constraint firstAttribute="trailing" secondItem="E6z-Ea-r0N" secondAttribute="trailing" id="Vyy-qW-kfZ"/>
+                                    <constraint firstItem="v1w-Ak-gwX" firstAttribute="bottom" secondItem="E6z-Ea-r0N" secondAttribute="bottom" constant="4" id="Y5S-ek-dmM"/>
+                                    <constraint firstItem="E6z-Ea-r0N" firstAttribute="top" secondItem="btE-2l-ZYc" secondAttribute="top" constant="8" id="YWm-B5-X31"/>
+                                    <constraint firstItem="E6z-Ea-r0N" firstAttribute="trailing" secondItem="v1w-Ak-gwX" secondAttribute="trailing" id="fzh-dM-oKz"/>
+                                    <constraint firstAttribute="bottom" secondItem="E6z-Ea-r0N" secondAttribute="bottom" constant="4" id="mTi-Af-Qy1"/>
+                                    <constraint firstItem="E6z-Ea-r0N" firstAttribute="height" secondItem="ldD-dz-C2t" secondAttribute="height" priority="250" id="ukQ-be-vVp"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="v1w-Ak-gwX"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="ldD-dz-C2t"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qTw-TH-WMS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="JLE-5X-txj" firstAttribute="leading" secondItem="qTw-TH-WMS" secondAttribute="leading" constant="16" id="4hM-WX-AcC"/>
-                            <constraint firstItem="E6z-Ea-r0N" firstAttribute="bottom" secondItem="qTw-TH-WMS" secondAttribute="bottom" id="6AJ-Dt-Zqc"/>
-                            <constraint firstItem="E6z-Ea-r0N" firstAttribute="top" secondItem="JLE-5X-txj" secondAttribute="bottom" id="E8o-ak-XG7"/>
-                            <constraint firstItem="E6z-Ea-r0N" firstAttribute="leading" secondItem="qTw-TH-WMS" secondAttribute="leading" id="Jjp-fi-bjo"/>
+                            <constraint firstItem="btE-2l-ZYc" firstAttribute="top" secondItem="qTw-TH-WMS" secondAttribute="top" constant="28" id="IDN-yv-9UI"/>
+                            <constraint firstItem="btE-2l-ZYc" firstAttribute="trailing" secondItem="qTw-TH-WMS" secondAttribute="trailing" id="KMy-QU-Cnk"/>
+                            <constraint firstItem="qTw-TH-WMS" firstAttribute="leading" secondItem="btE-2l-ZYc" secondAttribute="leading" id="UAa-Q4-IOr"/>
                             <constraint firstItem="qTw-TH-WMS" firstAttribute="trailing" secondItem="JLE-5X-txj" secondAttribute="trailing" constant="16" id="djJ-HT-hvT"/>
-                            <constraint firstItem="qTw-TH-WMS" firstAttribute="trailing" secondItem="E6z-Ea-r0N" secondAttribute="trailing" id="h7Z-xC-Vam"/>
                             <constraint firstItem="qTw-TH-WMS" firstAttribute="top" secondItem="JLE-5X-txj" secondAttribute="top" constant="16" id="p0s-KL-dhg"/>
+                            <constraint firstItem="btE-2l-ZYc" firstAttribute="bottom" secondItem="qTw-TH-WMS" secondAttribute="bottom" constant="20" id="pn7-vL-ZJA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KLQ-Ai-hFL"/>
                     <connections>
+                        <outlet property="containerScrollView" destination="btE-2l-ZYc" id="aCd-hR-OJ5"/>
                         <outlet property="datePicker" destination="JLE-5X-txj" id="vTU-Dy-ehy"/>
                         <outlet property="mediaViewer" destination="E6z-Ea-r0N" id="AeX-gz-qjr"/>
                     </connections>
