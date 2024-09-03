@@ -12,7 +12,7 @@
 		A1475FA82C8470CC006FBFF7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A1475FA72C8470CC006FBFF7 /* Base */; };
 		A1475FAA2C8470CE006FBFF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1475FA92C8470CE006FBFF7 /* Assets.xcassets */; };
 		A1475FAD2C8470CE006FBFF7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A1475FAC2C8470CE006FBFF7 /* Base */; };
-		A1475FB82C8470CE006FBFF7 /* CosmicViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FB72C8470CE006FBFF7 /* CosmicViewTests.swift */; };
+		A1475FB82C8470CE006FBFF7 /* MockNetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FB72C8470CE006FBFF7 /* MockNetworkManagerTests.swift */; };
 		A1475FC22C8470CE006FBFF7 /* CosmicViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FC12C8470CE006FBFF7 /* CosmicViewUITests.swift */; };
 		A1475FC42C8470CE006FBFF7 /* CosmicViewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FC32C8470CE006FBFF7 /* CosmicViewUITestsLaunchTests.swift */; };
 		A1475FD22C8490AE006FBFF7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FD12C8490AE006FBFF7 /* Environment.swift */; };
@@ -35,6 +35,35 @@
 		A1475FFB2C84F23E006FBFF7 /* AstroService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FFA2C84F23E006FBFF7 /* AstroService.swift */; };
 		A1475FFD2C84F2ED006FBFF7 /* Date+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FFC2C84F2ED006FBFF7 /* Date+Custom.swift */; };
 		A1475FFF2C86FDA0006FBFF7 /* MediaCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FFE2C86FDA0006FBFF7 /* MediaCacheManager.swift */; };
+		A14760092C878C85006FBFF7 /* CosmicSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FD42C84928E006FBFF7 /* CosmicSnapshot.swift */; };
+		A147600A2C878C85006FBFF7 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FF62C84EF8D006FBFF7 /* NetworkError.swift */; };
+		A147600B2C878C85006FBFF7 /* Date+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FFC2C84F2ED006FBFF7 /* Date+Custom.swift */; };
+		A147600C2C878C85006FBFF7 /* AsyncMediaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FE22C84D7F0006FBFF7 /* AsyncMediaProvider.swift */; };
+		A147600D2C878C85006FBFF7 /* AstroService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FFA2C84F23E006FBFF7 /* AstroService.swift */; };
+		A147600E2C878C85006FBFF7 /* MediaOfTheDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FEE2C84EA6D006FBFF7 /* MediaOfTheDayViewController.swift */; };
+		A147600F2C878C85006FBFF7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FF02C84EE3D006FBFF7 /* NetworkManager.swift */; };
+		A14760102C878C85006FBFF7 /* String+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FE92C84E212006FBFF7 /* String+Custom.swift */; };
+		A14760112C878C85006FBFF7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FD12C8490AE006FBFF7 /* Environment.swift */; };
+		A14760122C878C85006FBFF7 /* MediaViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FD92C8493FA006FBFF7 /* MediaViewer.swift */; };
+		A14760132C878C85006FBFF7 /* MediaCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FFE2C86FDA0006FBFF7 /* MediaCacheManager.swift */; };
+		A14760142C878C85006FBFF7 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FF42C84EE9A006FBFF7 /* Request.swift */; };
+		A14760152C878C85006FBFF7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FE52C84D8B8006FBFF7 /* Constants.swift */; };
+		A14760172C878C85006FBFF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FA02C8470CC006FBFF7 /* AppDelegate.swift */; };
+		A14760182C878C85006FBFF7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FA22C8470CC006FBFF7 /* SceneDelegate.swift */; };
+		A14760192C878C85006FBFF7 /* CosmicSnapshotRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FE02C849B2D006FBFF7 /* CosmicSnapshotRequestModel.swift */; };
+		A147601A2C878C85006FBFF7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FD72C8493A1006FBFF7 /* LoadingView.swift */; };
+		A147601B2C878C85006FBFF7 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14760012C8783EF006FBFF7 /* MockURLSession.swift */; };
+		A147601C2C878C85006FBFF7 /* ServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FF82C84F064006FBFF7 /* ServiceProviding.swift */; };
+		A147601D2C878C85006FBFF7 /* NetworkProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FF22C84EE68006FBFF7 /* NetworkProviding.swift */; };
+		A147601F2C878C85006FBFF7 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = A14760062C878C85006FBFF7 /* YouTubeiOSPlayerHelper */; };
+		A14760212C878C85006FBFF7 /* MediaViewer.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1475FDB2C84947F006FBFF7 /* MediaViewer.xib */; };
+		A14760222C878C85006FBFF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1475FA92C8470CE006FBFF7 /* Assets.xcassets */; };
+		A14760232C878C85006FBFF7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A1475FAC2C8470CE006FBFF7 /* Base */; };
+		A14760242C878C85006FBFF7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A1475FA72C8470CC006FBFF7 /* Base */; };
+		A14760302C878EA1006FBFF7 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A147602F2C878EA1006FBFF7 /* URLSession.swift */; };
+		A14760322C8790BD006FBFF7 /* PictureOfTheDayResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = A14760312C8790BD006FBFF7 /* PictureOfTheDayResponse.json */; };
+		A14760342C87AB66006FBFF7 /* AsyncMediaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14760332C87AB66006FBFF7 /* AsyncMediaTests.swift */; };
+		A14760362C87AC50006FBFF7 /* AstroServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14760352C87AC50006FBFF7 /* AstroServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +81,13 @@
 			remoteGlobalIDString = A1475F9C2C8470CC006FBFF7;
 			remoteInfo = CosmicView;
 		};
+		A147602D2C878E4C006FBFF7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1475F952C8470CC006FBFF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A14760042C878C85006FBFF7;
+			remoteInfo = "CosmicView-Dev";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -63,7 +99,7 @@
 		A1475FAC2C8470CE006FBFF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1475FAE2C8470CE006FBFF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1475FB32C8470CE006FBFF7 /* CosmicViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmicViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1475FB72C8470CE006FBFF7 /* CosmicViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmicViewTests.swift; sourceTree = "<group>"; };
+		A1475FB72C8470CE006FBFF7 /* MockNetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManagerTests.swift; sourceTree = "<group>"; };
 		A1475FBD2C8470CE006FBFF7 /* CosmicViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CosmicViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1475FC12C8470CE006FBFF7 /* CosmicViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmicViewUITests.swift; sourceTree = "<group>"; };
 		A1475FC32C8470CE006FBFF7 /* CosmicViewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmicViewUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -86,6 +122,13 @@
 		A1475FFA2C84F23E006FBFF7 /* AstroService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroService.swift; sourceTree = "<group>"; };
 		A1475FFC2C84F2ED006FBFF7 /* Date+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Custom.swift"; sourceTree = "<group>"; };
 		A1475FFE2C86FDA0006FBFF7 /* MediaCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCacheManager.swift; sourceTree = "<group>"; };
+		A14760012C8783EF006FBFF7 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		A14760282C878C85006FBFF7 /* CosmicView-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CosmicView-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A147602A2C878D7D006FBFF7 /* CosmicView-Dev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CosmicView-Dev-Info.plist"; sourceTree = "<group>"; };
+		A147602F2C878EA1006FBFF7 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
+		A14760312C8790BD006FBFF7 /* PictureOfTheDayResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PictureOfTheDayResponse.json; sourceTree = "<group>"; };
+		A14760332C87AB66006FBFF7 /* AsyncMediaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncMediaTests.swift; sourceTree = "<group>"; };
+		A14760352C87AC50006FBFF7 /* AstroServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +154,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A147601E2C878C85006FBFF7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A147601F2C878C85006FBFF7 /* YouTubeiOSPlayerHelper in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -130,6 +181,7 @@
 				A1475F9D2C8470CC006FBFF7 /* CosmicView.app */,
 				A1475FB32C8470CE006FBFF7 /* CosmicViewTests.xctest */,
 				A1475FBD2C8470CE006FBFF7 /* CosmicViewUITests.xctest */,
+				A14760282C878C85006FBFF7 /* CosmicView-Dev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,6 +200,7 @@
 				A1475FA92C8470CE006FBFF7 /* Assets.xcassets */,
 				A1475FAB2C8470CE006FBFF7 /* LaunchScreen.storyboard */,
 				A1475FAE2C8470CE006FBFF7 /* Info.plist */,
+				A147602A2C878D7D006FBFF7 /* CosmicView-Dev-Info.plist */,
 			);
 			path = CosmicView;
 			sourceTree = "<group>";
@@ -155,7 +208,10 @@
 		A1475FB62C8470CE006FBFF7 /* CosmicViewTests */ = {
 			isa = PBXGroup;
 			children = (
-				A1475FB72C8470CE006FBFF7 /* CosmicViewTests.swift */,
+				A14760002C878353006FBFF7 /* Mock */,
+				A1475FB72C8470CE006FBFF7 /* MockNetworkManagerTests.swift */,
+				A14760332C87AB66006FBFF7 /* AsyncMediaTests.swift */,
+				A14760352C87AC50006FBFF7 /* AstroServiceTests.swift */,
 			);
 			path = CosmicViewTests;
 			sourceTree = "<group>";
@@ -223,6 +279,16 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		A14760002C878353006FBFF7 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				A14760312C8790BD006FBFF7 /* PictureOfTheDayResponse.json */,
+				A14760012C8783EF006FBFF7 /* MockURLSession.swift */,
+				A147602F2C878EA1006FBFF7 /* URLSession.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -259,6 +325,7 @@
 			);
 			dependencies = (
 				A1475FB52C8470CE006FBFF7 /* PBXTargetDependency */,
+				A147602E2C878E4C006FBFF7 /* PBXTargetDependency */,
 			);
 			name = CosmicViewTests;
 			productName = CosmicViewTests;
@@ -283,6 +350,27 @@
 			productReference = A1475FBD2C8470CE006FBFF7 /* CosmicViewUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		A14760042C878C85006FBFF7 /* CosmicView-Dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A14760252C878C85006FBFF7 /* Build configuration list for PBXNativeTarget "CosmicView-Dev" */;
+			buildPhases = (
+				A14760082C878C85006FBFF7 /* Sources */,
+				A147601E2C878C85006FBFF7 /* Frameworks */,
+				A14760202C878C85006FBFF7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A14760052C878C85006FBFF7 /* PBXTargetDependency */,
+			);
+			name = "CosmicView-Dev";
+			packageProductDependencies = (
+				A14760062C878C85006FBFF7 /* YouTubeiOSPlayerHelper */,
+			);
+			productName = CosmicView;
+			productReference = A14760282C878C85006FBFF7 /* CosmicView-Dev.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -298,7 +386,7 @@
 					};
 					A1475FB22C8470CE006FBFF7 = {
 						CreatedOnToolsVersion = 15.4;
-						TestTargetID = A1475F9C2C8470CC006FBFF7;
+						TestTargetID = A14760042C878C85006FBFF7;
 					};
 					A1475FBC2C8470CE006FBFF7 = {
 						CreatedOnToolsVersion = 15.4;
@@ -323,6 +411,7 @@
 			projectRoot = "";
 			targets = (
 				A1475F9C2C8470CC006FBFF7 /* CosmicView */,
+				A14760042C878C85006FBFF7 /* CosmicView-Dev */,
 				A1475FB22C8470CE006FBFF7 /* CosmicViewTests */,
 				A1475FBC2C8470CE006FBFF7 /* CosmicViewUITests */,
 			);
@@ -352,6 +441,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A14760202C878C85006FBFF7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A14760212C878C85006FBFF7 /* MediaViewer.xib in Resources */,
+				A14760222C878C85006FBFF7 /* Assets.xcassets in Resources */,
+				A14760322C8790BD006FBFF7 /* PictureOfTheDayResponse.json in Resources */,
+				A14760232C878C85006FBFF7 /* Base in Resources */,
+				A14760242C878C85006FBFF7 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +490,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1475FB82C8470CE006FBFF7 /* CosmicViewTests.swift in Sources */,
+				A1475FB82C8470CE006FBFF7 /* MockNetworkManagerTests.swift in Sources */,
+				A14760342C87AB66006FBFF7 /* AsyncMediaTests.swift in Sources */,
+				A14760362C87AC50006FBFF7 /* AstroServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +502,34 @@
 			files = (
 				A1475FC22C8470CE006FBFF7 /* CosmicViewUITests.swift in Sources */,
 				A1475FC42C8470CE006FBFF7 /* CosmicViewUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A14760082C878C85006FBFF7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A14760092C878C85006FBFF7 /* CosmicSnapshot.swift in Sources */,
+				A147600A2C878C85006FBFF7 /* NetworkError.swift in Sources */,
+				A14760302C878EA1006FBFF7 /* URLSession.swift in Sources */,
+				A147600B2C878C85006FBFF7 /* Date+Custom.swift in Sources */,
+				A147600C2C878C85006FBFF7 /* AsyncMediaProvider.swift in Sources */,
+				A147600D2C878C85006FBFF7 /* AstroService.swift in Sources */,
+				A147600E2C878C85006FBFF7 /* MediaOfTheDayViewController.swift in Sources */,
+				A147600F2C878C85006FBFF7 /* NetworkManager.swift in Sources */,
+				A14760102C878C85006FBFF7 /* String+Custom.swift in Sources */,
+				A14760112C878C85006FBFF7 /* Environment.swift in Sources */,
+				A14760122C878C85006FBFF7 /* MediaViewer.swift in Sources */,
+				A14760132C878C85006FBFF7 /* MediaCacheManager.swift in Sources */,
+				A14760142C878C85006FBFF7 /* Request.swift in Sources */,
+				A14760152C878C85006FBFF7 /* Constants.swift in Sources */,
+				A14760172C878C85006FBFF7 /* AppDelegate.swift in Sources */,
+				A14760182C878C85006FBFF7 /* SceneDelegate.swift in Sources */,
+				A14760192C878C85006FBFF7 /* CosmicSnapshotRequestModel.swift in Sources */,
+				A147601A2C878C85006FBFF7 /* LoadingView.swift in Sources */,
+				A147601B2C878C85006FBFF7 /* MockURLSession.swift in Sources */,
+				A147601C2C878C85006FBFF7 /* ServiceProviding.swift in Sources */,
+				A147601D2C878C85006FBFF7 /* NetworkProviding.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +549,15 @@
 		A1475FDF2C8498C9006FBFF7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = A1475FDE2C8498C9006FBFF7 /* YouTubeiOSPlayerHelper */;
+		};
+		A14760052C878C85006FBFF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = A1475FDE2C8498C9006FBFF7 /* YouTubeiOSPlayerHelper */;
+		};
+		A147602E2C878E4C006FBFF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A14760042C878C85006FBFF7 /* CosmicView-Dev */;
+			targetProxy = A147602D2C878E4C006FBFF7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -640,7 +780,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CosmicView.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CosmicView";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CosmicView-Dev.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CosmicView-Dev";
 			};
 			name = Debug;
 		};
@@ -660,7 +800,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CosmicView.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CosmicView";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CosmicView-Dev.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CosmicView-Dev";
 			};
 			name = Release;
 		};
@@ -697,6 +837,70 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = CosmicView;
+			};
+			name = Release;
+		};
+		A14760262C878C85006FBFF7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R3739K2Z26;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CosmicView-Dev-Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.personal.CosmicView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A14760272C878C85006FBFF7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R3739K2Z26;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CosmicView-Dev-Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.personal.CosmicView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -739,10 +943,27 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		A14760252C878C85006FBFF7 /* Build configuration list for PBXNativeTarget "CosmicView-Dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A14760262C878C85006FBFF7 /* Debug */,
+				A14760272C878C85006FBFF7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
 		A1475FDD2C8497E6006FBFF7 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/youtube/youtube-ios-player-helper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+		A14760072C878C85006FBFF7 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/youtube/youtube-ios-player-helper.git";
 			requirement = {
@@ -761,6 +982,11 @@
 		A1475FEB2C84E430006FBFF7 /* YouTubeiOSPlayerHelper */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A1475FDD2C8497E6006FBFF7 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
+			productName = YouTubeiOSPlayerHelper;
+		};
+		A14760062C878C85006FBFF7 /* YouTubeiOSPlayerHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A14760072C878C85006FBFF7 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
 			productName = YouTubeiOSPlayerHelper;
 		};
 /* End XCSwiftPackageProductDependency section */

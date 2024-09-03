@@ -10,9 +10,8 @@ import UIKit
 
 enum Constants {
     
-    static let placeholderImage = UIImage(named: "placeholderCat")
+    static let placeholderImage = UIImage(named: "PlaceholderApod")
     
-    static let savedRequestId = Bundle.main.bundleIdentifier!
-    static let activeRequestId = "\(Bundle.main.bundleIdentifier!).active"
+    static let activeRequestId = UUID().uuidString
     
 }
