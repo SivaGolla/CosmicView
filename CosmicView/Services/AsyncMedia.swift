@@ -29,7 +29,7 @@ class AsyncMedia {
         
         // Check if the image is already cached in the image cache.
         // If a cached image is found, return it immediately via the completion handler.
-        if let cachedImage = UserSession.imageCache.object(forKey: urlPath as NSString) {
+        if let cachedImage = MediaCache.shared.loadImage(forKey: urlPath) {
             completion(cachedImage)
             return
         }
@@ -51,7 +51,7 @@ class AsyncMedia {
             }
             
             // Cache the successfully downloaded image using the URL path as the key.
-            UserSession.imageCache.setObject(image, forKey: urlPath as NSString)
+            MediaCache.shared.saveImage(image, forKey: urlPath)
             
             // Return the downloaded image via the completion handler.
             completion(image)

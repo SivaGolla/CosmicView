@@ -34,6 +34,7 @@
 		A1475FF92C84F064006FBFF7 /* ServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FF82C84F064006FBFF7 /* ServiceProviding.swift */; };
 		A1475FFB2C84F23E006FBFF7 /* AstroService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FFA2C84F23E006FBFF7 /* AstroService.swift */; };
 		A1475FFD2C84F2ED006FBFF7 /* Date+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FFC2C84F2ED006FBFF7 /* Date+Custom.swift */; };
+		A1475FFF2C86FDA0006FBFF7 /* MediaCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FFE2C86FDA0006FBFF7 /* MediaCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		A1475FF82C84F064006FBFF7 /* ServiceProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProviding.swift; sourceTree = "<group>"; };
 		A1475FFA2C84F23E006FBFF7 /* AstroService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroService.swift; sourceTree = "<group>"; };
 		A1475FFC2C84F2ED006FBFF7 /* Date+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Custom.swift"; sourceTree = "<group>"; };
+		A1475FFE2C86FDA0006FBFF7 /* MediaCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 				A1475FD12C8490AE006FBFF7 /* Environment.swift */,
 				A1475FE22C84D7F0006FBFF7 /* AsyncMedia.swift */,
 				A1475FE72C84D986006FBFF7 /* UserSession.swift */,
+				A1475FFE2C86FDA0006FBFF7 /* MediaCache.swift */,
 				A1475FF02C84EE3D006FBFF7 /* NetworkManager.swift */,
 				A1475FF22C84EE68006FBFF7 /* NetworkProviding.swift */,
 				A1475FF62C84EF8D006FBFF7 /* NetworkError.swift */,
@@ -369,6 +372,7 @@
 				A1475FEA2C84E212006FBFF7 /* String+Custom.swift in Sources */,
 				A1475FD22C8490AE006FBFF7 /* Environment.swift in Sources */,
 				A1475FDA2C8493FA006FBFF7 /* MediaViewer.swift in Sources */,
+				A1475FFF2C86FDA0006FBFF7 /* MediaCache.swift in Sources */,
 				A1475FF52C84EE9A006FBFF7 /* Request.swift in Sources */,
 				A1475FE62C84D8B8006FBFF7 /* Constants.swift in Sources */,
 				A1475FE82C84D986006FBFF7 /* UserSession.swift in Sources */,

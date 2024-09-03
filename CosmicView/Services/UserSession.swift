@@ -11,10 +11,6 @@ import UIKit
 /// A utility class that manages user session configurations, including caching and network session settings.
 class UserSession {
     
-    /// A shared image cache used throughout the app to store and retrieve images.
-    /// This cache is key-value based, where the key is a string (typically the image URL) and the value is the cached UIImage.
-    static var imageCache = NSCache<NSString, UIImage>()
-    
     /// A shared URLSession configured for network requests with custom settings.
     /// - The session is configured to ignore local cache data and not use a URL cache.
     /// - The session also has a timeout interval of 30 seconds for both requests and resources.
