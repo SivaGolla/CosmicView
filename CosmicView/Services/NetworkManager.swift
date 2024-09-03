@@ -31,7 +31,8 @@ class NetworkManager: NSObject {
     func execute<T: Decodable>(request: Request, completion: @escaping (Result<T, NetworkError>) -> Void) -> URLSessionDataTaskProtocol? {
         
         // Encode the request path to ensure it is a valid URL.
-        guard let path = request.path.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: path) else {
+        guard let path = request.path.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), 
+                let url = URL(string: path) else {
             completion(.failure(.invalidUrl))
             return nil
         }
@@ -94,6 +95,64 @@ class NetworkManager: NSObject {
         // Start the network task.
         task.resume()
         return task
+    }
+    
+    func execute<T: Decodable>(request: Request) async throws -> Result<T, NetworkError> {
+        
+        // Encode the request path to ensure it is a valid URL.
+        guard let path = request.path.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), 
+                let url = URL(string: path) else {
+            return .failure(.invalidUrl)
+        }
+        
+        // Create a URLRequest with the encoded URL.
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = request.method.rawValue
+        urlRequest.addValue(request.contentType, forHTTPHeaderField: "Content-Type")
+        
+        // Add additional header parameters if provided.
+        if let headerParams = request.headerParams {
+            for (key, value) in headerParams {
+                urlRequest.addValue(value, forHTTPHeaderField: key)
+            }
+        }
+        
+        // Set the body of the request if it is a POST request and the body is provided.
+        if request.method == .post, let body = request.body {
+            urlRequest.httpBody = body
+        }
+                
+        let (data, response) = try await activeSession.data(for: urlRequest, delegate: nil)
+        
+        // Ensure the response is an HTTPURLResponse.
+        guard let httpResponse = response as? HTTPURLResponse else {
+            return .failure(.badRequest)
+        }
+        
+        // Handle the response based on the HTTP status code.
+        switch httpResponse.statusCode {
+        case 200...300:
+            // Successful response range.
+            
+            // Attempt to decode the response data into the expected type.
+            do {
+                let result = try JSONDecoder().decode(T.self, from: data)
+                return .success(result)
+                
+            } catch let error as NSError {
+                // Print error details and return a parsing error.
+                print(error.debugDescription)
+                return .failure(.parsingError)
+            }
+            
+        case 500...599:
+            // Server error range.
+            return .failure(.internalServerError)
+            
+        default:
+            // Handle other status codes as bad requests.
+            return .failure(.badRequest)
+        }
     }
 }
     

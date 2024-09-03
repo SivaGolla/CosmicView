@@ -25,6 +25,29 @@ protocol URLSessionProtocol {
     /// - Returns: A URLSessionDataTaskProtocol that can be used to start the request.
     ///
     func dataTask(with request: URLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol
+      
+    /// Creates a data task with the given request and completion handler.
+    /// - Parameters:
+    ///   - request: The URL object that provides the request details.
+    ///   - completionHandler: The completion handler to call when the load request is complete.
+    /// - Returns: A URLSessionDataTaskProtocol that can be used to start the request.
+    ///
+    func dataTask(with url: URL, completionHandler: @escaping @Sendable (Data?, URLResponse?, (any Error)?) -> Void) -> URLSessionDataTaskProtocol
+    
+    /// Fetches data for the given request
+    /// - Parameters:
+    ///   - request: The URLRequest object that provides the request details.
+    ///   - delegate: delegate
+    /// - Returns: A (Data, URLResponse) tuple that can be used to start the request.
+    ///
+    func data(for request: URLRequest, delegate: (any URLSessionTaskDelegate)?) async throws -> (Data, URLResponse)
+    
+    /// Fetches data for the given url end point
+    /// - Parameters:
+    ///   - url: URL object that provides the end point
+    ///   - delegate: delegate
+    /// - Returns: A (Data, URLResponse) tuple that can be used to start the request.
+    func data(from url: URL, delegate: (any URLSessionTaskDelegate)?) async throws -> (Data, URLResponse)
 }
 
 /// Extension to conform URLSession to the URLSessionProtocol, enabling the use of URLSession in a testable way.
@@ -39,6 +62,36 @@ extension URLSession: URLSessionProtocol {
         // Create a URLSessionDataTask and return it as a URLSessionDataTaskProtocol.
         let dataTask = dataTask(with: request, completionHandler: completionHandler) as URLSessionDataTask
         return dataTask
+    }
+    
+    /// Creates a data task with the given request and completion handler.
+    /// - Parameters:
+    ///   - request: The URL object that provides the request details.
+    ///   - completionHandler: The completion handler to call when the load request is complete.
+    /// - Returns: A URLSessionDataTaskProtocol that can be used to start the request.
+    func dataTask(with url: URL, completionHandler: @escaping @Sendable (Data?, URLResponse?, (any Error)?) -> Void) -> URLSessionDataTaskProtocol {
+        let dataTask = dataTask(with: url, completionHandler: completionHandler) as URLSessionDataTask
+        return dataTask
+    }
+    
+    /// Fetches data for the given request
+    /// - Parameters:
+    ///   - request: The URLRequest object that provides the request details.
+    ///   - delegate: delegate
+    /// - Returns: A (Data, URLResponse) tuple that can be used to start the request.
+    ///
+    func data(for request: URLRequest, delegate: (any URLSessionTaskDelegate)?) async throws -> (Data, URLResponse) {
+        // Create a URLSessionDataTask and return it as a URLSessionDataTaskProtocol.
+        return try await data(for: request)
+    }
+    
+    /// Fetches data for the given url
+    /// - Parameters:
+    ///   - request: The URLRequest object that provides the request details.
+    ///   - delegate: delegate
+    /// - Returns: A (Data, URLResponse) tuple that can be used to start the request.
+    func data(from url: URL, delegate: (any URLSessionTaskDelegate)?) async throws -> (Data, URLResponse) {
+        return try await data(from: url)
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  MediaCache.swift
+//  MediaCacheManager.swift
 //  CosmicView
 //
 //  Created by Venkata Sivannarayana Golla on 03/09/24.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-class MediaCache {
+class MediaCacheManager {
     
     // Singleton instance
-    static let shared = MediaCache()
+    static let shared = MediaCacheManager()
     
     /// A shared image cache used throughout the app to store and retrieve images.
     /// This cache is key-value based, where the key is a string (typically the image URL) and the value is the cached UIImage.

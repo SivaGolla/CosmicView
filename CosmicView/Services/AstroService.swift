@@ -95,4 +95,19 @@ class AstroService: ServiceProviding {
             }
         }
     }
+    
+    /// Executes a network request and returns the result.
+    /// - Note: This method is generic and can handle any Decodable type.
+    ///
+    @MainActor
+    func fetch<T>() async throws -> Result<T, NetworkError> where T : Decodable {
+        
+        // Construct the request using makeRequest().
+        guard let request = makeRequest() else {
+            return .failure(.invalidUrl)
+        }
+        
+        // Execute the request using NetworkManager.
+        return try await NetworkManager(session: UserSession.activeSession).execute(request: request)
+    }
 }

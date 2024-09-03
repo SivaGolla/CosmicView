@@ -25,7 +25,11 @@ class MediaOfTheDayViewController: UIViewController {
     var selectedDate: Date = Date() {
         didSet {
             print(selectedDate)
-            fetchMediaOfTheDay()
+            // fetchMediaOfTheDay()
+            
+            Task {
+                await fetchAsyncMediaOfTheDay()
+            }
         }
     }
 
@@ -38,7 +42,10 @@ class MediaOfTheDayViewController: UIViewController {
         
         // Configure the date picker and initiate the download of the media for a date.
         populateDatePicker()
-        fetchMediaOfTheDay()
+//        fetchMediaOfTheDay()
+        Task {
+            await fetchAsyncMediaOfTheDay()
+        }
     }
     
     /// Handles date selection from the date picker and updates the `selectedDate` property.
@@ -89,6 +96,41 @@ extension MediaOfTheDayViewController {
             }
             self?.datePicker.isHidden = false
         }
+    }
+    
+    // Asynchronously fetches the Astronomy Picture of the Day (APOD) media for the selected date.
+    private func fetchAsyncMediaOfTheDay() async {
+        
+        // Start the loading animation to indicate that the fetching process is ongoing.
+        LoadingView.start()
+
+        // Get the active request ID from the constants and use it to create a URL search parameter model for the service request.
+        let requestId = Constants.activeRequestId
+        let urlSearchParams = CosmicSnapshotRequestModel(id: requestId, date: selectedDate)
+
+        // Create an instance of the AstroService to make the network request.
+        let serviceRequest = AstroService()
+        serviceRequest.urlSearchParams = urlSearchParams
+
+        do {
+            // Attempt to fetch the APOD media using the service. The `fetch` function returns a `Result` object.
+            let result: Result<CosmicSnapshot, NetworkError> = try await serviceRequest.fetch()
+
+            // Check if the result is successful. If so, set the fetched media item to the media viewer.
+            if case .success(let mediaItem) = result {
+                mediaViewer.mediaItem = mediaItem
+            }
+
+        } catch let error as NSError {
+            // If an error occurs during the fetching process, print the error for debugging purposes,
+            // stop the loading animation, and show an error prompt to the user.
+            debugPrint(error.debugDescription)
+            LoadingView.stop()
+            showErrorPrompt()
+        }
+
+        // Make the date picker visible again after the fetch operation is completed.
+        datePicker.isHidden = false
     }
     
     /// Displays an alert to the user when an error occurs during data fetching.

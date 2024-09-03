@@ -1,5 +1,5 @@
 //
-//  AsyncMedia.swift
+//  AsyncMediaProvider.swift
 //  CosmicView
 //
 //  Created by Venkata Sivannarayana Golla on 01/09/24.
@@ -29,7 +29,7 @@ class AsyncMedia {
         
         // Check if the image is already cached in the image cache.
         // If a cached image is found, return it immediately via the completion handler.
-        if let cachedImage = MediaCache.shared.loadImage(forKey: urlPath) {
+        if let cachedImage = MediaCacheManager.shared.loadImage(forKey: urlPath) {
             completion(cachedImage)
             return
         }
@@ -41,8 +41,11 @@ class AsyncMedia {
             return
         }
         
+        /// The URLSession instance used to perform network operations, conforming to the `URLSessionProtocol` for testability.
+        let activeSession: URLSessionProtocol = URLSession.shared
+        
         // Create a data task to download the image from the specified URL.
-        let task = URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+        let task = activeSession.dataTask(with: imageUrl) { data, response, error in
             // Ensure data was received, there were no errors, and that the data can be converted into a UIImage.
             guard let data = data, error == nil, let image = UIImage(data: data) else {
                 // If any of the above conditions fail, return the placeholder image.
@@ -51,7 +54,7 @@ class AsyncMedia {
             }
             
             // Cache the successfully downloaded image using the URL path as the key.
-            MediaCache.shared.saveImage(image, forKey: urlPath)
+            MediaCacheManager.shared.saveImage(image, forKey: urlPath)
             
             // Return the downloaded image via the completion handler.
             completion(image)
@@ -59,6 +62,59 @@ class AsyncMedia {
         
         // Start the image download task.
         task.resume()
+    }
+    
+    /// Loads an image from a URL asynchronously.
+    /// If the image is cached, it is returned immediately. Otherwise, the image is downloaded from the URL.
+    ///
+    /// - Parameters:
+    ///   - urlPath: The string URL path from which to load the image.
+    ///   - placeholder: An optional placeholder image to return if the image cannot be loaded.
+    /// - Returns: Returns the loaded `UIImage` or the placeholder image if loading fails.
+    ///
+    @MainActor
+    static func loadImage(urlPath: String, placeholder: UIImage?) async throws -> UIImage? {
+        // If the URL path is empty, return the placeholder image immediately.
+        guard !urlPath.isEmpty else {
+            return placeholder
+        }
+        
+        // Check if the image is already cached in the image cache.
+        // If a cached image is found, return it immediately via the completion handler.
+        if let cachedImage = MediaCacheManager.shared.loadImage(forKey: urlPath) {
+            return cachedImage
+        }
+        
+        // Attempt to create a URL object from the provided URL path string.
+        // If the URL is invalid (e.g., malformed), return the placeholder image.
+        guard let imageUrl = URL(string: urlPath) else {
+            return placeholder
+        }
+        
+        /// The URLSession instance used to perform network operations, conforming to the `URLSessionProtocol` for testability.
+        let activeSession: URLSessionProtocol = URLSession.shared
+        
+        // Use `URLSession` to asynchronously fetch the image data from the specified URL.
+        let (data, response) = try await activeSession.data(from: imageUrl, delegate: nil)
+        
+        // Ensure the response is an HTTPURLResponse.
+        // Handle the response based on the HTTP status code and is in successful status code range
+        guard let httpResponse = response as? HTTPURLResponse,
+              (200...300).contains(httpResponse.statusCode) else {
+            return placeholder
+        }
+        
+        // Ensure data was received, there were no errors, and that the data can be converted into a UIImage.
+        guard let image = UIImage(data: data) else {
+            // If any of the above conditions fail, return the placeholder image.
+            return placeholder
+        }
+        
+        // Cache the successfully downloaded image using the URL path as the key.
+        MediaCacheManager.shared.saveImage(image, forKey: urlPath)
+        
+        // Return the downloaded image via the completion handler.
+        return image
     }
 }
 

@@ -55,13 +55,8 @@ class MediaViewer: UIView {
             case .image:
                 mediaRendererType = .image
                 showCurrentPlayerAndHideOtherPlayers()
-                AsyncMedia.loadImage(urlPath: mediaInstance.hdUrl ?? "", placeholder: Constants.placeholderImage) { [weak self] image in
-                    
-                    DispatchQueue.main.async {
-                        LoadingView.stop()
-                        self?.imageView.image = image
-                    }
-                }
+                // loadRemote(image: mediaInstance)
+                loadAsyncRemote(image: mediaInstance)
                 
             case .video:
                 loadRemote(video: mediaInstance)
@@ -114,6 +109,54 @@ class MediaViewer: UIView {
     }
     
     // MARK: - Media Loading Methods
+    
+    /// Loads an image from a remote URL provided by the `CosmicSnapshot` object and updates the UI with the loaded image.
+    /// If the image fails to load or if the URL is invalid, a placeholder image is used instead.
+    ///
+    /// - Parameter image: A `CosmicSnapshot` object that contains the URL (`hdUrl`) of the image to be loaded.
+    ///
+    private func loadRemote(image: CosmicSnapshot) {
+        // Asynchronously load an image from the provided URL or use a placeholder if the URL is invalid
+        AsyncMedia.loadImage(urlPath: image.hdUrl ?? "", placeholder: Constants.placeholderImage) { [weak self] image in
+            
+            // Switch back to the main thread to update the UI
+            DispatchQueue.main.async {
+                // Stop the loading spinner
+                LoadingView.stop()
+                
+                // Set the loaded image (or the placeholder) to the imageView
+                self?.imageView.image = image
+            }
+        }
+    }
+    
+    /// Asynchronously loads an image from a remote URL provided by the `CosmicSnapshot` object and updates the UI with the loaded image.
+    /// If the image fails to load, an error is logged, and a placeholder image is used instead.
+    ///
+    /// - Parameter image: A `CosmicSnapshot` object that contains the URL (`hdUrl`) of the image to be loaded.
+    ///
+    /// This function leverages Swift's concurrency features, specifically the `async/await` syntax, to handle the image loading asynchronously. It performs the following steps:
+    /// - Uses `Task` to create a new asynchronous context for loading the image.
+    ///
+    /// Note:
+    /// - The function ensures that the `imageView` is updated on the main thread since the UI-related changes are performed within the asynchronous context created by `Task`.
+    ///
+    private func loadAsyncRemote(image: CosmicSnapshot) {
+        Task {
+            do {
+                // Attempt to load the image asynchronously using the provided URL or a placeholder if URL is invalid
+                imageView.image = try await AsyncMedia.loadImage(urlPath: image.hdUrl ?? "", placeholder: Constants.placeholderImage)
+                
+            } catch let error as NSError {
+                
+                // Log an error message if image loading fails
+                debugPrint("Failed to load apod image with reason: \(error.debugDescription)")
+            }
+            
+            // Stop the loading spinner once the image loading operation is complete
+            LoadingView.stop()
+        }
+    }
     
     /// Renders the remote video based on the CosmicSnapshot data.
     /// - Parameter cosmicData: The data model containing information about the CosmicSnapshot.
