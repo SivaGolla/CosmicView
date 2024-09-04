@@ -6,30 +6,122 @@
 //
 
 import XCTest
+@testable import CosmicView_Dev
 
 final class AsyncMediaTests: XCTestCase {
-
+    
+    var networkManager: NetworkManager!
+    var session: MockURLSession!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        try super.setUpWithError()
+        session = MockURLSession()
+        session.mDelegate = self
+        networkManager = NetworkManager(session: session)
     }
-
+    
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        session.mDelegate = nil
+        session = nil
+        networkManager = nil
+        try super.tearDownWithError()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testLoadImageWithEmptyUrlReturnsPlaceholder() {
+        // Arrange
+        let placeholder = UIImage(named: "placeholder")
+        let expectation = XCTestExpectation(description: "Completion handler called")
+        
+        // Act
+        AsyncMedia.loadImage(urlPath: "", session: session, placeholder: placeholder) { image in
+            // Assert
+            XCTAssertEqual(image, placeholder)
+            expectation.fulfill()
         }
+        
+        wait(for: [expectation], timeout: 1.0)
     }
+    
+    func testLoadImageWithCachedImageReturnsCachedImage() {
+        // Arrange
+        let urlPath = "https://example.com/cached/image.jpg"
+        let cachedImage = UIImage(named: "PlaceholderApod")
+        MediaCacheManager.shared.saveImage(cachedImage!, forKey: urlPath)
+        let expectation = XCTestExpectation(description: "Completion handler called")
+        
+        // Act
+        AsyncMedia.loadImage(urlPath: urlPath, session: session, placeholder: nil) { image in
+            // Assert
+            XCTAssertEqual(image, cachedImage)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testLoadImageWithInvalidUrlReturnsPlaceholder() {
+        // Arrange
+        let invalidUrlPath = "invalid-url"
+        let placeholder = Constants.placeholderImage
+        let expectation = XCTestExpectation(description: "Completion handler called")
+        
+        // Act
+        AsyncMedia.loadImage(urlPath: invalidUrlPath, session: session, placeholder: placeholder) { image in
+            // Assert
+            XCTAssertEqual(image, placeholder)
+            expectation.fulfill()
+        }
+        
+        wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testLoadAsyncImageWithEmptyUrlReturnsPlaceholder() async throws {
+        // Arrange
+        let placeholder = Constants.placeholderImage
+        
+        // Act
+        let image = try await AsyncMedia.loadImage(urlPath: "", session: session, placeholder: placeholder)
+        
+        // Assert
+        XCTAssertEqual(image, placeholder)
+    }
+    
+    func testLoadAsyncImageWithCachedImageReturnsCachedImage() async throws {
+        // Arrange
+        let urlPath = "https://example.com/cached/image.jpg"
+        let cachedImage = UIImage(named: "CachedImage")
+        MediaCacheManager.shared.saveImage(cachedImage!, forKey: urlPath)
+        
+        // Act
+        let image = try await AsyncMedia.loadImage(urlPath: urlPath, session: session, placeholder: nil)
+        
+        // Assert
+        XCTAssertEqual(image, cachedImage)
+    }
+    
+    func testLoadAsyncImageWithInvalidUrlReturnsPlaceholder() async throws {
+        // Arrange
+        let invalidUrlPath = "invalid-url"
+        let placeholder = Constants.placeholderImage
+        
+        // Act
+        let image = try await AsyncMedia.loadImage(urlPath: invalidUrlPath, session: session, placeholder: placeholder)
+        
+        // Assert
+        XCTAssertEqual(image, placeholder)
+    }
+}
 
+extension AsyncMediaTests: MockURLSessionDelegate {
+    func resourceName(for path: String, httpMethod: String) -> String {
+        if path.contains("cached") {
+            return "CachedImage"
+        }
+        
+        if path.contains("downloaded") {
+            return "CachedImage"
+        }
+        
+        return "NasaApod"
+    }
 }

@@ -78,7 +78,7 @@ class MediaViewer: UIView {
     
     // MARK: - Setup Methods
     
-    func commonInit() {
+    private func commonInit() {
         // Load the view from the XIB file and add it as a subview.
         
         let viewFromXib = Bundle.main.loadNibNamed("MediaViewer", owner: self, options: nil)?.first as! UIView
@@ -117,7 +117,9 @@ class MediaViewer: UIView {
     ///
     private func loadRemote(image: CosmicSnapshot) {
         // Asynchronously load an image from the provided URL or use a placeholder if the URL is invalid
-        AsyncMedia.loadImage(urlPath: image.hdUrl ?? "", placeholder: Constants.placeholderImage) { [weak self] image in
+        AsyncMedia.loadImage(urlPath: image.hdUrl ?? "", 
+                             session: UserSession.activeSession,
+                             placeholder: Constants.placeholderImage) { [weak self] image in
             
             // Switch back to the main thread to update the UI
             DispatchQueue.main.async {
@@ -141,11 +143,13 @@ class MediaViewer: UIView {
     /// Note:
     /// - The function ensures that the `imageView` is updated on the main thread since the UI-related changes are performed within the asynchronous context created by `Task`.
     ///
-    private func loadAsyncRemote(image: CosmicSnapshot) {
+    func loadAsyncRemote(image: CosmicSnapshot) {
         Task {
             do {
                 // Attempt to load the image asynchronously using the provided URL or a placeholder if URL is invalid
-                imageView.image = try await AsyncMedia.loadImage(urlPath: image.hdUrl ?? "", placeholder: Constants.placeholderImage)
+                imageView.image = try await AsyncMedia.loadImage(urlPath: image.hdUrl ?? "",
+                                                                 session: UserSession.activeSession,
+                                                                 placeholder: Constants.placeholderImage)
                 
             } catch let error as NSError {
                 
@@ -176,7 +180,7 @@ class MediaViewer: UIView {
         } else {
             // Load the video from a web URL.
             
-            AsyncMedia.loadVideo(urlPath: video.url) { htmlString in
+            AsyncMedia.loadVideo(urlPath: video.url, session: UserSession.activeSession) { htmlString in
                 
                 guard let videoPath = htmlString, !videoPath.isEmpty else {
                     LoadingView.stop()

@@ -48,6 +48,14 @@ protocol URLSessionProtocol {
     ///   - delegate: delegate
     /// - Returns: A (Data, URLResponse) tuple that can be used to start the request.
     func data(from url: URL, delegate: (any URLSessionTaskDelegate)?) async throws -> (Data, URLResponse)
+    
+    /// Creates a download task with the given request and completion handler.
+    /// - Parameters:
+    ///   - request: The URLRequest object that provides the request details.
+    ///   - completionHandler: The completion handler to call when the load request is complete.
+    /// - Returns: A URLSessionDownloadTaskProtocol that can be used to start the request.
+    ///
+//    func downloadingTask(with url: URL, completionHandler: @escaping @Sendable (URL?, URLResponse?, (any Error)?) -> Void) -> URLSessionDownloadTask
 }
 
 /// Extension to conform URLSession to the URLSessionProtocol, enabling the use of URLSession in a testable way.
@@ -82,7 +90,7 @@ extension URLSession: URLSessionProtocol {
     ///
     func data(for request: URLRequest, delegate: (any URLSessionTaskDelegate)?) async throws -> (Data, URLResponse) {
         // Create a URLSessionDataTask and return it as a URLSessionDataTaskProtocol.
-        return try await data(for: request)
+        return try await data(for: request) as (Data, URLResponse)
     }
     
     /// Fetches data for the given url
@@ -93,6 +101,10 @@ extension URLSession: URLSessionProtocol {
     func data(from url: URL, delegate: (any URLSessionTaskDelegate)?) async throws -> (Data, URLResponse) {
         return try await data(from: url)
     }
+    
+//    func downloadingTask(with url: URL, completionHandler: @escaping @Sendable (URL?, URLResponse?, (any Error)?) -> Void) -> URLSessionDownloadTask {
+//        return downloadTask(with: url, completionHandler: completionHandler) as URLSessionDownloadTask
+//    }
 }
 
 /// A protocol abstraction for URLSessionDataTask, allowing for better testability.

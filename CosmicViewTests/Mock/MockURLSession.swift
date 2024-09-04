@@ -55,7 +55,7 @@ class MockURLSession: URLSessionProtocol {
         let bundle = Bundle(for: NetworkManager.self)
         responseFileName = mDelegate?.resourceName(for: lastURL?.absoluteString ?? "", httpMethod: RequestMethod.get.rawValue) ?? ""
         
-        guard let mockResponseFileUrl = bundle.url(forResource: responseFileName, withExtension: "json"),
+        guard let mockResponseFileUrl = bundle.url(forResource: responseFileName, withExtension: "jpg"),
               let data = try? Data(contentsOf: mockResponseFileUrl) else {
             completionHandler(nil, nil, mockError)
             return mockDataTask
@@ -85,7 +85,7 @@ class MockURLSession: URLSessionProtocol {
         
         let bundle = Bundle(for: NetworkManager.self)
         responseFileName = mDelegate?.resourceName(for: lastURL?.absoluteString ?? "", httpMethod: RequestMethod.get.rawValue) ?? ""
-        guard let mockResponseFileUrl = bundle.url(forResource: responseFileName, withExtension: "json"),
+        guard let mockResponseFileUrl = bundle.url(forResource: responseFileName, withExtension: "jpg"),
               let data = try? Data(contentsOf: mockResponseFileUrl) else {
             return (Data(), mockHttpURLResponse(url: url))
         }

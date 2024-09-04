@@ -14,11 +14,14 @@ final class MockNetworkManagerTests: XCTestCase {
     var session: MockURLSession!
     
     override func setUpWithError() throws {
+        try super.setUpWithError()
         session = MockURLSession()
+        session.mDelegate = self
         networkManager = NetworkManager(session: session)
     }
 
     override func tearDownWithError() throws {
+        session.mDelegate = nil
         session = nil
         networkManager = nil
         try super.tearDownWithError()
@@ -86,5 +89,11 @@ final class MockNetworkManagerTests: XCTestCase {
         if case .success(let snapshot) = result {
             XCTAssertNotNil(snapshot)
         }
+    }
+}
+
+extension MockNetworkManagerTests: MockURLSessionDelegate {
+    func resourceName(for path: String, httpMethod: String) -> String {
+        return "PictureOfTheDayResponse"
     }
 }

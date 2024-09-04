@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "E6AABBEA-4196-447B-9385-B83E8FBA6407",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:CosmicView.xcodeproj",
+        "identifier" : "A1475FB22C8470CE006FBFF7",
+        "name" : "CosmicViewTests"
+      }
+    }
+  ],
+  "version" : 1
+}

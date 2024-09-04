@@ -64,6 +64,12 @@
 		A14760322C8790BD006FBFF7 /* PictureOfTheDayResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = A14760312C8790BD006FBFF7 /* PictureOfTheDayResponse.json */; };
 		A14760342C87AB66006FBFF7 /* AsyncMediaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14760332C87AB66006FBFF7 /* AsyncMediaTests.swift */; };
 		A14760362C87AC50006FBFF7 /* AstroServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14760352C87AC50006FBFF7 /* AstroServiceTests.swift */; };
+		A14760382C8875AA006FBFF7 /* MediaViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14760372C8875AA006FBFF7 /* MediaViewerTests.swift */; };
+		A147603A2C887D03006FBFF7 /* MediaCacheManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14760392C887D03006FBFF7 /* MediaCacheManagerTests.swift */; };
+		A14760412C88909B006FBFF7 /* CosmicView-Dev-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A14760402C88909B006FBFF7 /* CosmicView-Dev-Info.plist */; };
+		A14760422C88909B006FBFF7 /* CosmicView-Dev-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A14760402C88909B006FBFF7 /* CosmicView-Dev-Info.plist */; };
+		A147604A2C889FF4006FBFF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14760482C889A19006FBFF7 /* Assets.xcassets */; };
+		A147604D2C88DE57006FBFF7 /* CachedImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A147604B2C88DE4E006FBFF7 /* CachedImage.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,11 +130,16 @@
 		A1475FFE2C86FDA0006FBFF7 /* MediaCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCacheManager.swift; sourceTree = "<group>"; };
 		A14760012C8783EF006FBFF7 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		A14760282C878C85006FBFF7 /* CosmicView-Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CosmicView-Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A147602A2C878D7D006FBFF7 /* CosmicView-Dev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CosmicView-Dev-Info.plist"; sourceTree = "<group>"; };
 		A147602F2C878EA1006FBFF7 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		A14760312C8790BD006FBFF7 /* PictureOfTheDayResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PictureOfTheDayResponse.json; sourceTree = "<group>"; };
 		A14760332C87AB66006FBFF7 /* AsyncMediaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncMediaTests.swift; sourceTree = "<group>"; };
 		A14760352C87AC50006FBFF7 /* AstroServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroServiceTests.swift; sourceTree = "<group>"; };
+		A14760372C8875AA006FBFF7 /* MediaViewerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewerTests.swift; sourceTree = "<group>"; };
+		A14760392C887D03006FBFF7 /* MediaCacheManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCacheManagerTests.swift; sourceTree = "<group>"; };
+		A14760402C88909B006FBFF7 /* CosmicView-Dev-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CosmicView-Dev-Info.plist"; sourceTree = SOURCE_ROOT; };
+		A14760432C8891DC006FBFF7 /* CosmicView-Dev.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = "CosmicView-Dev.xctestplan"; path = "CosmicViewTests/CosmicView-Dev.xctestplan"; sourceTree = "<group>"; };
+		A14760482C889A19006FBFF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A147604B2C88DE4E006FBFF7 /* CachedImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CachedImage.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +179,7 @@
 		A1475F942C8470CC006FBFF7 = {
 			isa = PBXGroup;
 			children = (
+				A14760432C8891DC006FBFF7 /* CosmicView-Dev.xctestplan */,
 				A1475F9F2C8470CC006FBFF7 /* CosmicView */,
 				A1475FB62C8470CE006FBFF7 /* CosmicViewTests */,
 				A1475FC02C8470CE006FBFF7 /* CosmicViewUITests */,
@@ -200,7 +212,7 @@
 				A1475FA92C8470CE006FBFF7 /* Assets.xcassets */,
 				A1475FAB2C8470CE006FBFF7 /* LaunchScreen.storyboard */,
 				A1475FAE2C8470CE006FBFF7 /* Info.plist */,
-				A147602A2C878D7D006FBFF7 /* CosmicView-Dev-Info.plist */,
+				A14760402C88909B006FBFF7 /* CosmicView-Dev-Info.plist */,
 			);
 			path = CosmicView;
 			sourceTree = "<group>";
@@ -212,6 +224,8 @@
 				A1475FB72C8470CE006FBFF7 /* MockNetworkManagerTests.swift */,
 				A14760332C87AB66006FBFF7 /* AsyncMediaTests.swift */,
 				A14760352C87AC50006FBFF7 /* AstroServiceTests.swift */,
+				A14760372C8875AA006FBFF7 /* MediaViewerTests.swift */,
+				A14760392C887D03006FBFF7 /* MediaCacheManagerTests.swift */,
 			);
 			path = CosmicViewTests;
 			sourceTree = "<group>";
@@ -283,8 +297,10 @@
 			isa = PBXGroup;
 			children = (
 				A14760312C8790BD006FBFF7 /* PictureOfTheDayResponse.json */,
+				A147604B2C88DE4E006FBFF7 /* CachedImage.jpg */,
 				A14760012C8783EF006FBFF7 /* MockURLSession.swift */,
 				A147602F2C878EA1006FBFF7 /* URLSession.swift */,
+				A14760482C889A19006FBFF7 /* Assets.xcassets */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -424,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1475FDC2C84947F006FBFF7 /* MediaViewer.xib in Resources */,
+				A14760412C88909B006FBFF7 /* CosmicView-Dev-Info.plist in Resources */,
 				A1475FAA2C8470CE006FBFF7 /* Assets.xcassets in Resources */,
 				A1475FAD2C8470CE006FBFF7 /* Base in Resources */,
 				A1475FA82C8470CC006FBFF7 /* Base in Resources */,
@@ -449,8 +466,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A14760212C878C85006FBFF7 /* MediaViewer.xib in Resources */,
+				A147604D2C88DE57006FBFF7 /* CachedImage.jpg in Resources */,
+				A14760422C88909B006FBFF7 /* CosmicView-Dev-Info.plist in Resources */,
 				A14760222C878C85006FBFF7 /* Assets.xcassets in Resources */,
 				A14760322C8790BD006FBFF7 /* PictureOfTheDayResponse.json in Resources */,
+				A147604A2C889FF4006FBFF7 /* Assets.xcassets in Resources */,
 				A14760232C878C85006FBFF7 /* Base in Resources */,
 				A14760242C878C85006FBFF7 /* Base in Resources */,
 			);
@@ -492,6 +512,8 @@
 			files = (
 				A1475FB82C8470CE006FBFF7 /* MockNetworkManagerTests.swift in Sources */,
 				A14760342C87AB66006FBFF7 /* AsyncMediaTests.swift in Sources */,
+				A147603A2C887D03006FBFF7 /* MediaCacheManagerTests.swift in Sources */,
+				A14760382C8875AA006FBFF7 /* MediaViewerTests.swift in Sources */,
 				A14760362C87AC50006FBFF7 /* AstroServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

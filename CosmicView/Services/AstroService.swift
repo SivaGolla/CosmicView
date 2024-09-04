@@ -20,7 +20,7 @@ class AstroService: ServiceProviding {
     
     /// Constructs a Request object based on the search parameters.
     /// - Returns: A Request object, or nil if the URL path cannot be constructed.
-    func makeRequest() -> Request? {
+    func makeRequest() -> Request {
         
         // Base URL for the Media of the Day API endpoint.
         var reqUrlPath = Environment.mediaOfTheData
@@ -82,10 +82,7 @@ class AstroService: ServiceProviding {
     func fetch<T>(completion: @escaping (Result<T, NetworkError>) -> Void) where T : Decodable {
         
         // Construct the request using makeRequest().
-        guard let request = makeRequest() else {
-            completion(.failure(.invalidUrl))
-            return
-        }
+        let request = makeRequest()
         
         // Execute the request using NetworkManager.
         NetworkManager(session: UserSession.activeSession).execute(request: request) { result in
@@ -103,9 +100,7 @@ class AstroService: ServiceProviding {
     func fetch<T>() async throws -> Result<T, NetworkError> where T : Decodable {
         
         // Construct the request using makeRequest().
-        guard let request = makeRequest() else {
-            return .failure(.invalidUrl)
-        }
+        let request = makeRequest()
         
         // Execute the request using NetworkManager.
         return try await NetworkManager(session: UserSession.activeSession).execute(request: request)

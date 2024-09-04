@@ -16,9 +16,9 @@ protocol ServiceProviding {
     var urlSearchParams: SearchParams? { get set }
     
     /// Creates a `Request` object based on the service's requirements.
-    /// - Returns: An optional `Request` object that encapsulates the details for the network request.
+    /// - Returns: An `Request` object that encapsulates the details for the network request.
     /// - This method should be implemented to build and return a `Request` object that includes the path, method, headers, and other necessary details.
-    func makeRequest() -> Request?
+    func makeRequest() -> Request
     
     /// Fetches data from the network and decodes it into a model of type `T`.
     /// - Parameter completion: A closure that will be called with the result of the network request. It returns a `Result` type that either contains the decoded object of type `T` or a `NetworkError`.

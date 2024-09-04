@@ -14,7 +14,7 @@ class MediaCacheManager {
     
     /// A shared image cache used throughout the app to store and retrieve images.
     /// This cache is key-value based, where the key is a string (typically the image URL) and the value is the cached UIImage.
-    private var imageCache = NSCache<NSString, UIImage>()
+    private(set) var imageCache = NSCache<NSString, UIImage>()
     
     private init() {
         // Optionally set cache limits

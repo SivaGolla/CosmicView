@@ -17,10 +17,11 @@ class AsyncMedia {
     ///
     /// - Parameters:
     ///   - urlPath: The string URL path from which to load the image.
+    ///   - session: The URLSession instance used to perform network operations, conforming to the `URLSessionProtocol` for testability.
     ///   - placeholder: An optional placeholder image to return if the image cannot be loaded.
     ///   - completion: A closure that returns the loaded `UIImage` or the placeholder image if loading fails.
     ///
-    static func loadImage(urlPath: String, placeholder: UIImage?, completion: @escaping ((UIImage?) -> Void)) {
+    static func loadImage(urlPath: String, session:URLSessionProtocol, placeholder: UIImage?, completion: @escaping ((UIImage?) -> Void)) {
         // If the URL path is empty, return the placeholder image immediately.
         guard !urlPath.isEmpty else {
             completion(placeholder)
@@ -40,12 +41,9 @@ class AsyncMedia {
             completion(placeholder)
             return
         }
-        
-        /// The URLSession instance used to perform network operations, conforming to the `URLSessionProtocol` for testability.
-        let activeSession: URLSessionProtocol = URLSession.shared
-        
+                
         // Create a data task to download the image from the specified URL.
-        let task = activeSession.dataTask(with: imageUrl) { data, response, error in
+        let task = session.dataTask(with: imageUrl) { data, response, error in
             // Ensure data was received, there were no errors, and that the data can be converted into a UIImage.
             guard let data = data, error == nil, let image = UIImage(data: data) else {
                 // If any of the above conditions fail, return the placeholder image.
@@ -69,11 +67,12 @@ class AsyncMedia {
     ///
     /// - Parameters:
     ///   - urlPath: The string URL path from which to load the image.
+    ///   - session: The URLSession instance used to perform network operations, conforming to the `URLSessionProtocol` for testability.
     ///   - placeholder: An optional placeholder image to return if the image cannot be loaded.
     /// - Returns: Returns the loaded `UIImage` or the placeholder image if loading fails.
     ///
     @MainActor
-    static func loadImage(urlPath: String, placeholder: UIImage?) async throws -> UIImage? {
+    static func loadImage(urlPath: String, session:URLSessionProtocol,  placeholder: UIImage?) async throws -> UIImage? {
         // If the URL path is empty, return the placeholder image immediately.
         guard !urlPath.isEmpty else {
             return placeholder
@@ -90,12 +89,9 @@ class AsyncMedia {
         guard let imageUrl = URL(string: urlPath) else {
             return placeholder
         }
-        
-        /// The URLSession instance used to perform network operations, conforming to the `URLSessionProtocol` for testability.
-        let activeSession: URLSessionProtocol = URLSession.shared
-        
+                
         // Use `URLSession` to asynchronously fetch the image data from the specified URL.
-        let (data, response) = try await activeSession.data(from: imageUrl, delegate: nil)
+        let (data, response) = try await session.data(from: imageUrl, delegate: nil)
         
         // Ensure the response is an HTTPURLResponse.
         // Handle the response based on the HTTP status code and is in successful status code range
@@ -125,7 +121,7 @@ extension AsyncMedia {
     ///   - urlPath: The URL string of the video to be downloaded.
     ///   - completion: A closure that is called when the download is complete, containing the video content as a string or an error if the download fails.
     ///
-    static func loadVideo(urlPath: String, completion: @escaping ((String?) -> Void)) {
+    static func loadVideo(urlPath: String, session:URLSessionProtocol, completion: @escaping ((String?) -> Void)) {
         
         // Attempt to create a URL object from the provided string.
         // If the URL string is invalid, return with `nil` for both the string and error.
