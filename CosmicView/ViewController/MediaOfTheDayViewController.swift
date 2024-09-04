@@ -42,10 +42,10 @@ class MediaOfTheDayViewController: UIViewController {
         
         // Configure the date picker and initiate the download of the media for a date.
         populateDatePicker()
-//        fetchMediaOfTheDay()
-        Task {
-            await fetchAsyncMediaOfTheDay()
-        }
+        fetchMediaOfTheDay()
+//        Task {
+//            await fetchAsyncMediaOfTheDay()
+//        }
     }
     
     /// Handles date selection from the date picker and updates the `selectedDate` property.

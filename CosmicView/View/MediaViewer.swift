@@ -55,8 +55,8 @@ class MediaViewer: UIView {
             case .image:
                 mediaRendererType = .image
                 showCurrentPlayerAndHideOtherPlayers()
-                // loadRemote(image: mediaInstance)
-                loadAsyncRemote(image: mediaInstance)
+                loadRemote(image: mediaInstance)
+                //loadAsyncRemote(image: mediaInstance)
                 
             case .video:
                 loadRemote(video: mediaInstance)

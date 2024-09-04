@@ -18,6 +18,7 @@ class MockURLSession: URLSessionProtocol {
     weak var mDelegate: MockURLSessionDelegate? = nil
 
     var mockDataTask = MockURLSessionDataTask()
+    var mockDownloadTask = MockURLSessionDownloadTask()
     var mockData: Data?
     var mockError: Error?
     var responseFileName: String = ""
@@ -93,9 +94,34 @@ class MockURLSession: URLSessionProtocol {
         
         return (data, mockHttpURLResponse(url: url))
     }
+    
+    func downloadTask(with url: URL, completionHandler: @escaping @Sendable (URL?, URLResponse?, (any Error)?) -> Void) -> URLSessionDownloadTaskProtocol {
+        
+        lastURL = url
+        let bundle = Bundle(for: NetworkManager.self)
+        guard let mockResponseFileUrl = bundle.url(forResource: "NetworkDownload_7f8PEa", withExtension: "tmp"),
+              let data = try? Data(contentsOf: mockResponseFileUrl) else {
+            return mockDownloadTask
+        }
+        
+        let cacheDirectory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+        let fileURL = cacheDirectory.appendingPathComponent("MockNetworkDownload_7f8PEa.tmp")
+            
+        try? data.write(to: fileURL)
+        completionHandler(fileURL, mockHttpURLResponse(url: url), mockError)
+        return mockDownloadTask
+    }
 }
 
 class MockURLSessionDataTask: URLSessionDataTaskProtocol {
+    private (set) var resumeWasCalled = false
+    
+    func resume() {
+        resumeWasCalled = true
+    }
+}
+
+class MockURLSessionDownloadTask: URLSessionDownloadTaskProtocol {
     private (set) var resumeWasCalled = false
     
     func resume() {

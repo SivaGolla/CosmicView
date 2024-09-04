@@ -55,7 +55,7 @@ protocol URLSessionProtocol {
     ///   - completionHandler: The completion handler to call when the load request is complete.
     /// - Returns: A URLSessionDownloadTaskProtocol that can be used to start the request.
     ///
-//    func downloadingTask(with url: URL, completionHandler: @escaping @Sendable (URL?, URLResponse?, (any Error)?) -> Void) -> URLSessionDownloadTask
+    func downloadTask(with url: URL, completionHandler: @escaping @Sendable (URL?, URLResponse?, (any Error)?) -> Void) -> URLSessionDownloadTaskProtocol
 }
 
 /// Extension to conform URLSession to the URLSessionProtocol, enabling the use of URLSession in a testable way.
@@ -102,9 +102,9 @@ extension URLSession: URLSessionProtocol {
         return try await data(from: url)
     }
     
-//    func downloadingTask(with url: URL, completionHandler: @escaping @Sendable (URL?, URLResponse?, (any Error)?) -> Void) -> URLSessionDownloadTask {
-//        return downloadTask(with: url, completionHandler: completionHandler) as URLSessionDownloadTask
-//    }
+    func downloadTask(with url: URL, completionHandler: @escaping @Sendable (URL?, URLResponse?, (any Error)?) -> Void) -> URLSessionDownloadTaskProtocol {
+        return downloadTask(with: url, completionHandler: completionHandler) as URLSessionDownloadTask
+    }
 }
 
 /// A protocol abstraction for URLSessionDataTask, allowing for better testability.
@@ -113,5 +113,14 @@ protocol URLSessionDataTaskProtocol {
     func resume()
 }
 
+/// A protocol abstraction for URLSessionDataTask, allowing for better testability.
+protocol URLSessionDownloadTaskProtocol {
+    /// Resumes the task, if it is suspended.
+    func resume()
+}
+
 /// Extension to conform URLSessionDataTask to the URLSessionDataTaskProtocol, allowing it to be used within the URLSessionProtocol abstraction.
 extension URLSessionDataTask: URLSessionDataTaskProtocol {}
+
+/// Extension to conform URLSessionDataTask to the URLSessionDataTaskProtocol, allowing it to be used within the URLSessionProtocol abstraction.
+extension URLSessionDownloadTask: URLSessionDownloadTaskProtocol {}

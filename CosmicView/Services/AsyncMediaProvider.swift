@@ -121,6 +121,7 @@ extension AsyncMedia {
     ///   - urlPath: The URL string of the video to be downloaded.
     ///   - completion: A closure that is called when the download is complete, containing the video content as a string or an error if the download fails.
     ///
+    @MainActor
     static func loadVideo(urlPath: String, session:URLSessionProtocol, completion: @escaping ((String?) -> Void)) {
         
         // Attempt to create a URL object from the provided string.
@@ -131,31 +132,28 @@ extension AsyncMedia {
         }
         
         // Create a download task to download the video from the URL.
-        let task = URLSession.shared.downloadTask(with: requestURL) { localURL, urlResponse, error in
+        let task = session.downloadTask(with: requestURL) { localURL, urlResponse, error in
             
-            // Switch to the main thread to handle UI updates or any other main-thread operations.
-            DispatchQueue.main.async {
-                
-                // If an error occurred during the download, return the error in the completion handler.
-                if error != nil {
-                    completion(nil)
+            // If an error occurred during the download, return the error in the completion handler.
+            if error != nil {
+                completion(nil)
+                return
+            }
+            
+            // Check if the video was downloaded successfully and is available at `localURL`.
+            if let localURL = localURL {
+                // Attempt to read the contents of the downloaded file as a string.
+                if let string = try? String(contentsOf: localURL) {
+                    // Print the video content (for debugging purposes).
+                    print(string)
+                    
+                    // Return the video content as a string in the completion handler.
+                    completion(string)
                     return
                 }
-                
-                // Check if the video was downloaded successfully and is available at `localURL`.
-                if let localURL = localURL {
-                    // Attempt to read the contents of the downloaded file as a string.
-                    if let string = try? String(contentsOf: localURL) {
-                        // Print the video content (for debugging purposes).
-                        print(string)
-                        
-                        // Return the video content as a string in the completion handler.
-                        completion(string)
-                    }
-                }
-                
-                // Note: If the content needs to be saved or further processed, additional code should be added here.
             }
+            
+            // Note: If the content needs to be saved or further processed, additional code should be added here.
         }
         
         // Start the download task.
