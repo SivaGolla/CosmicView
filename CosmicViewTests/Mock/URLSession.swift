@@ -22,3 +22,15 @@ extension CosmicSnapshot: Equatable {
         return lhs.title == rhs.title && lhs.dateText == rhs.dateText && lhs.explanation == rhs.explanation && lhs.mediaType == rhs.mediaType && lhs.url == rhs.url && lhs.hdUrl == rhs.hdUrl && lhs.thumbnailUrl == rhs.thumbnailUrl
     }
 }
+
+//class LoadingViewMock: LoadingView {
+//    var didStartLoading = false
+//    
+//    override class func start() {
+//        didStartLoading = true
+//    }
+//    
+//    override class func stop() {
+//        didStartLoading = false
+//    }
+//}

@@ -18,6 +18,13 @@
         "identifier" : "A1475FB22C8470CE006FBFF7",
         "name" : "CosmicViewTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:CosmicView.xcodeproj",
+        "identifier" : "A1475FBC2C8470CE006FBFF7",
+        "name" : "CosmicViewUITests"
+      }
     }
   ],
   "version" : 1

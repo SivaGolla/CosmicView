@@ -6,11 +6,11 @@
 //
 
 import XCTest
+@testable import CosmicView_Dev
 
 final class CosmicViewUITests: XCTestCase {
 
     var application: XCUIApplication!
-    
     
     override func setUpWithError() throws {
         application = XCUIApplication()
@@ -19,44 +19,61 @@ final class CosmicViewUITests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        application = nil
     }
 
     func testChoseAnotherDay() {
         
         XCTAssertTrue(application.isDisplayingHomeScreen)
+
+        let tabBar = application.tabBars.element(boundBy: 0)
+        XCTAssertTrue(tabBar.exists)
+        XCTAssertTrue(tabBar.buttons["Astro Pix"].exists)
+        XCTAssertTrue(tabBar.buttons["Astro Pix"].isHittable)
         
-        //XCTAssertTrue(application.staticTexts["mediaTitle"].exists)
+        XCTAssertTrue(tabBar.buttons["More"].exists)
+        XCTAssertTrue(tabBar.buttons["More"].isHittable)
+        
+        let containerScrollView = application.scrollViews["containerScrollView"]
+        XCTAssertTrue(containerScrollView.exists)
+
+        sleep(2)
+        
+        XCTAssertTrue(application.staticTexts["mediaTitle"].exists)
+        XCTAssertTrue(application.staticTexts["apodDescription"].exists)
         XCTAssertTrue(application.images["astronomyImage"].exists)
-        //XCTAssertTrue(application.textViews["mediaExplaination"].exists)
+                
         
-        XCTAssertTrue(application.datePickers["astroPixDatePicker"].exists)
+        let datePickerElement = application.datePickers["astroPixDatePicker"]
         
-        // work around: coordinates used and works only in iPhone 13 Max Pro considering issues with date picker automation
+        XCTAssertTrue(datePickerElement.exists)
+
         application.tapCoordinate(at: CGPoint(x:360,y:120))
-        
+
         let delayExpectation = XCTestExpectation(description: "Wait for Date Picker to Present")
         delayExpectation.isInverted = true
         wait(for: [delayExpectation], timeout: 1)
         
-        application.tapCoordinate(at: CGPoint(x:360,y:250))
-        // Changing date automation not working - Compact DatePicker selection seems having issues with automation
-//        application.datePickers.collectionViews.buttons["Friday, March 25"].otherElements.containing(.staticText, identifier:"25").element.tap()
+        let prevMonthButton = application.buttons["Previous Month"]
         
-        application.tapCoordinate(at: CGPoint(x:360,y:120))
+        XCTAssertTrue(prevMonthButton.exists)
+        XCTAssertTrue(prevMonthButton.isHittable)
+        prevMonthButton.tap()
+        
+        let aDateButton = application.collectionViews.element(boundBy: 0).buttons.element(boundBy: 0)
+        XCTAssertTrue(aDateButton.exists)
+        XCTAssertTrue(aDateButton.isHittable)
+        aDateButton.tap()
         
         let expectation = XCTestExpectation(description: "Wait for Date Picker to Dismiss")
         expectation.isInverted = true
         wait(for: [expectation], timeout: 1)
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+        
+        containerScrollView.swipeUp()
+        
+        let scrollExpectation = XCTestExpectation(description: "Wait for scrollview to decelerate")
+        scrollExpectation.isInverted = true
+        wait(for: [scrollExpectation], timeout: 1)
     }
 }
 

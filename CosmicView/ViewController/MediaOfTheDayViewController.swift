@@ -38,6 +38,7 @@ class MediaOfTheDayViewController: UIViewController {
         
         // Set the accessibility identifiers for UI elements for better accessibility support and testing.
         view.accessibilityIdentifier = "homeView"
+        containerScrollView.accessibilityIdentifier = "containerScrollView"
         datePicker.accessibilityIdentifier = "astroPixDatePicker"
         
         // Configure the date picker and initiate the download of the media for a date.

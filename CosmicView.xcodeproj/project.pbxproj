@@ -97,6 +97,13 @@
 			remoteGlobalIDString = A14760042C878C85006FBFF7;
 			remoteInfo = "CosmicView-Dev";
 		};
+		A1ADC1C32C8A504C00B300B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1475F952C8470CC006FBFF7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A14760042C878C85006FBFF7;
+			remoteInfo = "CosmicView-Dev";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -370,6 +377,7 @@
 			);
 			dependencies = (
 				A1475FBF2C8470CE006FBFF7 /* PBXTargetDependency */,
+				A1ADC1C42C8A504C00B300B0 /* PBXTargetDependency */,
 			);
 			name = CosmicViewUITests;
 			packageProductDependencies = (
@@ -419,7 +427,7 @@
 					};
 					A1475FBC2C8470CE006FBFF7 = {
 						CreatedOnToolsVersion = 15.4;
-						TestTargetID = A1475F9C2C8470CC006FBFF7;
+						TestTargetID = A14760042C878C85006FBFF7;
 					};
 				};
 			};
@@ -594,6 +602,11 @@
 			isa = PBXTargetDependency;
 			target = A14760042C878C85006FBFF7 /* CosmicView-Dev */;
 			targetProxy = A147602D2C878E4C006FBFF7 /* PBXContainerItemProxy */;
+		};
+		A1ADC1C42C8A504C00B300B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A14760042C878C85006FBFF7 /* CosmicView-Dev */;
+			targetProxy = A1ADC1C32C8A504C00B300B0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -854,7 +867,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CosmicView;
+				TEST_TARGET_NAME = "CosmicView-Dev";
 			};
 			name = Debug;
 		};
@@ -872,7 +885,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CosmicView;
+				TEST_TARGET_NAME = "CosmicView-Dev";
 			};
 			name = Release;
 		};
