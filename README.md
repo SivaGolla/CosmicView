@@ -9,9 +9,12 @@ This app demonstrates the use of modern Swift and iOS development practices, inc
 * Launch App, put your API KEY in setting view
  
 ## Screenshots
-![](./Readme-Assets/APOD1.png)
-![](./Readme-Assets/APOD2.png)
-![](./Readme-Assets/APOD3.png)
+
+<p>
+  <img src="./Readme-Assets/APOD1.png" width="30%" alt="Image 1">
+  <img src="./Readme-Assets/APOD2.png" width="30%" alt="Image 2">
+  <img src="./Readme-Assets/APOD3.png" width="30%" alt="Image 3">
+</p>
 
 ```
 MyProject/
