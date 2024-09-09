@@ -135,13 +135,10 @@ final class AstroServiceTests: XCTestCase {
         
         astroService.urlSearchParams = urlSearchParams
         
-        let result: Result<CosmicSnapshot, NetworkError> = try await astroService.fetch()
-        
-        // Assert
-        switch result {
-        case .success(let fetchedData):
-            XCTAssertEqual(fetchedData, model)
-        case .failure:
+        do {
+            let result: CosmicSnapshot = try await astroService.fetch()
+            XCTAssertEqual(result, model)
+        } catch let error as NSError {
             XCTFail("Expected success, but got failure")
         }
     }

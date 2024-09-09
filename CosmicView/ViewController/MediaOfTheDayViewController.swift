@@ -43,10 +43,10 @@ class MediaOfTheDayViewController: UIViewController {
         
         // Configure the date picker and initiate the download of the media for a date.
         populateDatePicker()
-        fetchMediaOfTheDay()
-//        Task {
-//            await fetchAsyncMediaOfTheDay()
-//        }
+        //fetchMediaOfTheDay()
+        Task {
+            await fetchAsyncMediaOfTheDay()
+        }
     }
     
     /// Handles date selection from the date picker and updates the `selectedDate` property.
@@ -115,12 +115,10 @@ extension MediaOfTheDayViewController {
 
         do {
             // Attempt to fetch the APOD media using the service. The `fetch` function returns a `Result` object.
-            let result: Result<CosmicSnapshot, NetworkError> = try await serviceRequest.fetch()
+            let result: CosmicSnapshot = try await serviceRequest.fetch()
 
             // Check if the result is successful. If so, set the fetched media item to the media viewer.
-            if case .success(let mediaItem) = result {
-                mediaViewer.mediaItem = mediaItem
-            }
+            mediaViewer.mediaItem = result
 
         } catch let error as NSError {
             // If an error occurs during the fetching process, print the error for debugging purposes,

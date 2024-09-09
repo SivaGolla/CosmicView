@@ -97,7 +97,7 @@ class AstroService: ServiceProviding {
     /// - Note: This method is generic and can handle any Decodable type.
     ///
     @MainActor
-    func fetch<T>() async throws -> Result<T, NetworkError> where T : Decodable {
+    func fetch<T>() async throws -> T where T : Decodable {
         
         // Construct the request using makeRequest().
         let request = makeRequest()

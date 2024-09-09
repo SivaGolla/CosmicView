@@ -80,15 +80,13 @@ final class MockNetworkManagerTests: XCTestCase {
                               type: .picOfTheDay,
                               body: nil)
         
-        let result: Result<CosmicSnapshot, NetworkError> = try await networkManager.execute(request: request)
+        let snapshot: CosmicSnapshot = try await networkManager.execute(request: request)
         
         if let sessionUrl = session.lastURL {
             XCTAssert(sessionUrl == url)
         }
         
-        if case .success(let snapshot) = result {
-            XCTAssertNotNil(snapshot)
-        }
+        XCTAssertNotNil(snapshot)
     }
 }
 

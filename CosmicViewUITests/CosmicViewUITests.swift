@@ -23,7 +23,8 @@ final class CosmicViewUITests: XCTestCase {
     }
 
     func testChoseAnotherDay() {
-        
+        sleep(2)
+
         XCTAssertTrue(application.isDisplayingHomeScreen)
 
         let tabBar = application.tabBars.element(boundBy: 0)
@@ -52,7 +53,7 @@ final class CosmicViewUITests: XCTestCase {
 
         let delayExpectation = XCTestExpectation(description: "Wait for Date Picker to Present")
         delayExpectation.isInverted = true
-        wait(for: [delayExpectation], timeout: 1)
+        wait(for: [delayExpectation], timeout: 2)
         
         let prevMonthButton = application.buttons["Previous Month"]
         

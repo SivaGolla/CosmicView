@@ -51,7 +51,6 @@
 		A14760172C878C85006FBFF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FA02C8470CC006FBFF7 /* AppDelegate.swift */; };
 		A14760182C878C85006FBFF7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FA22C8470CC006FBFF7 /* SceneDelegate.swift */; };
 		A14760192C878C85006FBFF7 /* CosmicSnapshotRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FE02C849B2D006FBFF7 /* CosmicSnapshotRequestModel.swift */; };
-		A147601A2C878C85006FBFF7 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FD72C8493A1006FBFF7 /* LoadingView.swift */; };
 		A147601B2C878C85006FBFF7 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14760012C8783EF006FBFF7 /* MockURLSession.swift */; };
 		A147601C2C878C85006FBFF7 /* ServiceProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FF82C84F064006FBFF7 /* ServiceProviding.swift */; };
 		A147601D2C878C85006FBFF7 /* NetworkProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1475FF22C84EE68006FBFF7 /* NetworkProviding.swift */; };
@@ -570,7 +569,6 @@
 				A14760172C878C85006FBFF7 /* AppDelegate.swift in Sources */,
 				A14760182C878C85006FBFF7 /* SceneDelegate.swift in Sources */,
 				A14760192C878C85006FBFF7 /* CosmicSnapshotRequestModel.swift in Sources */,
-				A147601A2C878C85006FBFF7 /* LoadingView.swift in Sources */,
 				A147601B2C878C85006FBFF7 /* MockURLSession.swift in Sources */,
 				A147601C2C878C85006FBFF7 /* ServiceProviding.swift in Sources */,
 				A147601D2C878C85006FBFF7 /* NetworkProviding.swift in Sources */,

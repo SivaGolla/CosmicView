@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
-class UserSession {    
+class UserSession {
     static var activeSession: URLSessionProtocol = MockURLSession()
 }
 
@@ -23,14 +24,16 @@ extension CosmicSnapshot: Equatable {
     }
 }
 
-//class LoadingViewMock: LoadingView {
-//    var didStartLoading = false
-//    
-//    override class func start() {
-//        didStartLoading = true
-//    }
-//    
-//    override class func stop() {
-//        didStartLoading = false
-//    }
-//}
+class LoadingView {
+    
+    static var didStartLoading = false
+    
+    public static func start(style: UIActivityIndicatorView.Style = .large, baseColor: UIColor = .gray) {
+        didStartLoading = true
+    }
+    
+    public static func stop() {
+        didStartLoading = false
+    }
+}
+

@@ -97,12 +97,12 @@ class NetworkManager: NSObject {
         return task
     }
     
-    func execute<T: Decodable>(request: Request) async throws -> Result<T, NetworkError> {
+    func execute<T: Decodable>(request: Request) async throws -> T {
         
         // Encode the request path to ensure it is a valid URL.
         guard let path = request.path.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), 
                 let url = URL(string: path) else {
-            return .failure(.invalidUrl)
+            throw NetworkError.invalidUrl
         }
         
         // Create a URLRequest with the encoded URL.
@@ -126,7 +126,7 @@ class NetworkManager: NSObject {
         
         // Ensure the response is an HTTPURLResponse.
         guard let httpResponse = response as? HTTPURLResponse else {
-            return .failure(.badRequest)
+            throw NetworkError.badRequest
         }
         
         // Handle the response based on the HTTP status code.
@@ -137,21 +137,21 @@ class NetworkManager: NSObject {
             // Attempt to decode the response data into the expected type.
             do {
                 let result = try JSONDecoder().decode(T.self, from: data)
-                return .success(result)
+                return result
                 
             } catch let error as NSError {
                 // Print error details and return a parsing error.
                 print(error.debugDescription)
-                return .failure(.parsingError)
+                throw NetworkError.parsingError
             }
             
         case 500...599:
             // Server error range.
-            return .failure(.internalServerError)
+            throw NetworkError.internalServerError
             
         default:
             // Handle other status codes as bad requests.
-            return .failure(.badRequest)
+            throw NetworkError.badRequest
         }
     }
 }
